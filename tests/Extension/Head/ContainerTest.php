@@ -62,6 +62,19 @@ class ContainerTest extends \PHPUnit_Framework_TestCase{
         $this->assertInstanceOf('Bkoetsier\Theme\Extension\Head\Title',$title);
         $this->assertEquals('test',$title->getTitle());
     }
+
+    /**
+     * @test
+     */
+    public function it_adds_a_custom_object_to_line_collection()
+    {
+        $this->sut->custom('<link rel=“alternate” hreflang=“de-de” href=“https://www.google.com/”/>');
+        $lines = $this->sut->getLines();
+        /** @var \Bkoetsier\Theme\Extension\Head\Custom $custom */
+        $title = $lines->get('custom');
+        $this->assertInstanceOf('Bkoetsier\Theme\Extension\Head\Custom',$custom);
+        $this->assertEquals('test',$custom->getCustom());
+    }
     
     /**
      * @test

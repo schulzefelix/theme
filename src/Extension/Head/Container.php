@@ -16,6 +16,7 @@ class Container
         $this->lines = new Collection(
             array(
                 'title' => new Title(''),
+                'custom' => new Custom(''),
                 'meta' => new Collection,
                 'style' => new Collection,
                 'link' => new Collection
@@ -78,6 +79,17 @@ class Container
     public function title($title)
     {
         $this->lines->put('title', new Title($title));
+        return $this;
+    }
+
+    /**
+     * Set the custom html
+     * @param string $custom
+     * @return $this
+     */
+    public function custom($custom)
+    {
+        $this->lines->put('custom', new Custom($custom));
         return $this;
     }
 
